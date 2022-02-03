@@ -16,6 +16,8 @@ app.use(express.json())
 
 
 // 3. Rutas
+app.use('/products', require('./routes/products'))
+
 
 
 // 4. Server

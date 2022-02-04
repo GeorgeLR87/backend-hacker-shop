@@ -1,16 +1,14 @@
-// ./server/controllers/productController.js
+
 const Product = require('./../models/Product')
 
-exports.create = async (req, res) => {
-    
-   //Del formulario, Creamos variables y asignamos valores.
+exports.create = async (req, res) => {    
+
    const {
        name,
        price,
        image
    } = req.body
 
-   //Creamos un producto en base de Datos
    try {
        const newProducto = await Product.create({
            name,
@@ -18,7 +16,6 @@ exports.create = async (req, res) => {
            image
        })
 
-       //devolver una respuesta en un formato JSON
        res.json({
            msg: 'Producto creado con exito',
            data:  newProducto
@@ -39,7 +36,6 @@ exports.readAll = async (req, res) => {
         res.json({
             msg: 'Productos obtenidos con exito',
             data:  products
-
         })
     } catch (error) {
         res.status(500)({
@@ -54,9 +50,8 @@ exports.readOne = async (req, res) => {
     const { id } = req.params
 
     try {
-
         const product = await Product.findById(id)
-
+        
         res.json({
             msg: 'Producto obtenido con exito',
             data: product
